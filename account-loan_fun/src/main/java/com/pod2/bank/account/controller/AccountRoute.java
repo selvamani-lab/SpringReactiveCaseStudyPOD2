@@ -47,7 +47,7 @@ public class AccountRoute {
 //
 	@Bean
 	RouterFunction<ServerResponse> getLoanAccount() {
-		return route(GET("/employees/{id}"), 
+		return route(GET("/account_func/{id}"), 
 				  req -> ok().body(accountService.getLoanAccount(Integer.valueOf(req.pathVariable("id"))),LoanAccount.class));
 	}
 //
@@ -64,7 +64,7 @@ public class AccountRoute {
 //		URI location = new URI(locationStr.toString());
 //		System.out.println(location.toString());
 
-		return route(POST("/account/loan"), 
+		return route(POST("/account_func/loan"), 
 				 req ->  ok().body(
 						 req.bodyToMono(LoanAccount.class).flatMap(obj ->
 						 accountService.applyLoan(obj)),LoanAccount.class));
@@ -87,13 +87,13 @@ public class AccountRoute {
 //		return Mono.just(ResponseEntity.accepted().body(response));
 //	}
 
-	private ResponseMessage getResponse(Integer id, String message) {
-		ResponseMessage response = new ResponseMessage();
-		response.setId(id);
-		response.setStatus(HttpStatus.OK.name());
-		response.setStatusCode(HttpStatus.OK.value());
-		response.setMessage(message);
-		return response;
-	}
+//	private ResponseMessage getResponse(Integer id, String message) {
+//		ResponseMessage response = new ResponseMessage();
+//		response.setId(id);
+//		response.setStatus(HttpStatus.OK.name());
+//		response.setStatusCode(HttpStatus.OK.value());
+//		response.setMessage(message);
+//		return response;
+//	}
 
 }

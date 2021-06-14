@@ -19,7 +19,7 @@ spring:
         - id: ACCOUNT-SERVICE-FUNC
           uri: lb://ACCOUNT-SERVICE-FUNC
           predicates:
-            - Path=/account/**
+            - Path=/account_func/**
           filters:
             - name: CircuitBreaker
               args:
